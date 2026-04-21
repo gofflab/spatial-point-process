@@ -22,7 +22,7 @@ def main():
             hidden_dim=48,
             n_layers=2,
             k_neighbors=12,
-            epochs=220,
+            epochs=240,
             lr=1e-2,
             smoothness_weight=0.8,
             entropy_weight=0.02,
