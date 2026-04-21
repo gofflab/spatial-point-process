@@ -1,5 +1,7 @@
 # Spatial Point Program Tool
 
+[![CI](https://github.com/gofflab/spatial-point-process/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/gofflab/spatial-point-process/actions/workflows/ci.yml)
+
 A minimal working prototype for segmentation-free latent spatial program discovery from point-level spatial transcriptomics data.
 
 ## Input
