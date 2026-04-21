@@ -20,8 +20,10 @@ No nuclei masks, cell masks, or prior assignments are required.
 - outputs soft and hard point-level program assignments
 
 ## Files
-- `spatial_point_program.py` — CLI and implementation
+- `spatial_point_program.py` — backward-compatible CLI entrypoint
+- `spatial_point_process/` — package modules (`io`, `graph`, `model`, `train`, `toy_data`, `cli`)
 - `test_toy_run.py` — toy end-to-end test
+- `.github/workflows/ci.yml` — CI workflow running toy test
 
 ## Quick start
 Generate toy data:
