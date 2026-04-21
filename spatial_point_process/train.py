@@ -89,7 +89,10 @@ def fit_model(df: pd.DataFrame, cfg: TrainConfig) -> Tuple[PointProgramModel, Fi
         "edge_index": edges_np,
         "assignment_probs": outputs["assignment_probs"].cpu().numpy(),
         "assignment_logits": outputs["assignment_logits"].cpu().numpy(),
+        "coord_evidence": outputs["coord_evidence"].cpu().numpy(),
         "program_gene_probs": outputs["program_gene_probs"].cpu().numpy(),
+        "program_coord_means": model.program_coord_means.detach().cpu().numpy(),
+        "program_coord_logvars": model.program_coord_logvars.detach().cpu().numpy(),
         "embeddings": outputs["embeddings"].cpu().numpy(),
     }
     result = FitResult(

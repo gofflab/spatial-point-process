@@ -38,6 +38,13 @@ def main():
 
         point_assignments = pd.read_csv(os.path.join(outdir, "point_assignments.csv"))
         program_summary = pd.read_csv(os.path.join(outdir, "program_gene_summary.csv"))
+        training_history = pd.read_csv(os.path.join(outdir, "training_history.csv"))
+        training_plot_path = os.path.join(outdir, "training_metrics.png")
+        gene_heatmap_path = os.path.join(outdir, "program_gene_heatmap.png")
+        assignment_plot_path = os.path.join(outdir, "assignment_scatter.png")
+        latent_plot_path = os.path.join(outdir, "spatial_latent_fields.png")
+        with open(os.path.join(outdir, "diagnostics_summary.json")) as f:
+            diagnostics = json.load(f)
         with open(os.path.join(outdir, "fit_metadata.json")) as f:
             meta = json.load(f)
 
@@ -48,13 +55,26 @@ def main():
             "loss_drop": float(loss_drop),
             "n_output_rows": int(point_assignments.shape[0]),
             "n_program_rows": int(program_summary.shape[0]),
-            "meta_n_points": int(meta["result"]["n_points"])
+            "n_history_rows": int(training_history.shape[0]),
+            "diagnostic_n_edges": int(diagnostics["graph"]["n_edges"]),
+            "has_training_plot": bool(os.path.exists(training_plot_path)),
+            "has_gene_heatmap": bool(os.path.exists(gene_heatmap_path)),
+            "has_assignment_plot": bool(os.path.exists(assignment_plot_path)),
+            "has_latent_plot": bool(os.path.exists(latent_plot_path)),
+            "meta_n_points": int(meta["result"]["n_points"]),
         }, indent=2))
 
         assert ari > 0.80
         assert loss_drop > 0.1
         assert point_assignments.shape[0] == df.shape[0]
         assert program_summary.shape[0] == 3
+        assert training_history.shape[0] == cfg.epochs
+        assert diagnostics["graph"]["n_edges"] > 0
+        assert len(diagnostics["programs"]) == 3
+        assert os.path.exists(training_plot_path)
+        assert os.path.exists(gene_heatmap_path)
+        assert os.path.exists(assignment_plot_path)
+        assert os.path.exists(latent_plot_path)
         assert meta["result"]["n_points"] == df.shape[0]
 
 

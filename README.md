@@ -41,7 +41,7 @@ python spatial_point_program.py train \
   --input toy.parquet \
   --outdir toy_out \
   --n-programs 3 \
-  --epochs 220 \
+  --epochs 240 \
   --k-neighbors 12
 ```
 
@@ -53,8 +53,14 @@ python test_toy_run.py
 
 ## Outputs
 - `fit_metadata.json`
+- `diagnostics_summary.json`
 - `point_assignments.csv`
 - `program_gene_summary.csv`
+- `training_history.csv`
+- `training_metrics.png`
+- `program_gene_heatmap.png`
+- `assignment_scatter.png`
+- `spatial_latent_fields.png`
 - `embeddings.npy`
 - `program_gene_probs.npy`
 - `edge_index.npy`

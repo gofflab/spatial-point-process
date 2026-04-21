@@ -2,7 +2,18 @@
 
 from spatial_point_process.cli import main, parse_args
 from spatial_point_process.graph import build_knn_graph
-from spatial_point_process.io import encode_inputs, load_points, save_outputs, summarize_programs
+from spatial_point_process.io import (
+    build_training_history_table,
+    encode_inputs,
+    load_points,
+    save_program_gene_heatmap,
+    save_spatial_latent_plot,
+    save_outputs,
+    save_assignment_scatter_plot,
+    save_training_plot,
+    summarize_diagnostics,
+    summarize_programs,
+)
 from spatial_point_process.model import MessagePassingLayer, PointProgramModel
 from spatial_point_process.toy_data import generate_toy_dataset
 from spatial_point_process.train import compute_loss, fit_model, set_seed
@@ -15,6 +26,7 @@ __all__ = [
     "PointProgramModel",
     "REQUIRED_COLUMNS",
     "TrainConfig",
+    "build_training_history_table",
     "build_knn_graph",
     "compute_loss",
     "encode_inputs",
@@ -23,7 +35,12 @@ __all__ = [
     "load_points",
     "main",
     "parse_args",
+    "save_assignment_scatter_plot",
+    "save_program_gene_heatmap",
+    "save_spatial_latent_plot",
     "save_outputs",
+    "save_training_plot",
     "set_seed",
+    "summarize_diagnostics",
     "summarize_programs",
 ]

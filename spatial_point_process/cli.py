@@ -37,6 +37,7 @@ def parse_args() -> argparse.Namespace:
     toy.add_argument("--n-per-domain", type=int, default=250)
     toy.add_argument("--seed", type=int, default=0)
     toy.add_argument("--include-z", action="store_true")
+    toy.add_argument("--variant", choices=["simple", "structured"], default="simple")
     return parser.parse_args()
 
 
@@ -44,7 +45,12 @@ def main() -> None:
     """CLI entrypoint."""
     args = parse_args()
     if args.command == "make-toy":
-        df = generate_toy_dataset(n_per_domain=args.n_per_domain, seed=args.seed, include_z=args.include_z)
+        df = generate_toy_dataset(
+            n_per_domain=args.n_per_domain,
+            seed=args.seed,
+            include_z=args.include_z,
+            variant=args.variant,
+        )
         ext = os.path.splitext(args.output)[1].lower()
         if ext == ".parquet":
             df.to_parquet(args.output, index=False)

@@ -4,6 +4,7 @@ channels:
 dependencies:
   - python=3.11
   - numpy<2.3
+  - matplotlib
   - pandas
   - pyarrow
   - scipy<1.17
